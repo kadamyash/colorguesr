@@ -1,0 +1,93 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap');
+
+:root {
+  --font-family: "DM Sans", "Inter" sans-serif;
+
+  --br-0: 1em;
+  --br-1: 2em;
+  --br-2: 4em;
+  --br-3: 8em;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: #efefef;
+}
+
+.main{
+  display: flex;
+  min-height: 100vh;
+  margin: 0;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.text-block{
+  color: #fcfcfc;
+  mix-blend-mode: exclusion;
+}
+
+.footer{
+  position: absolute;
+  bottom: 0;
+  width: 100vw;
+  display: flex;
+  padding: 0.4em;
+  background: #4f4f4f;
+  color: white;  
+}
+
+.block{
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(150,150,150,0.7);
+  width: 40vw;
+  height: calc(40vw);
+  border-radius: var(--br-2);
+  transform: perspective(20cm) rotateY(0deg);
+  transition: transform 400ms ease;
+  &.revealed{
+    transform: perspective(10cm) rotateY(180deg);
+    &.highlighted{
+      outline: 2px solid black;
+      outline-offset: 4px;
+      border: 1px solid white;
+    }
+  }
+
+  &:hover, &:focus{
+    outline: 1px solid black;
+    outline-offset: 4px;
+  }
+  .title{
+    text-transform: lowercase;
+    color: #efefef;
+    mix-blend-mode: exclusion;
+    opacity: 0;
+    transition: opacity 100ms ease;
+    &.revealed{
+      transform: rotateY(180deg);
+      opacity: 1;
+      transition: opacity none;
+    }
+  }
+}
+
+
+@media screen and (min-width: 1280px){
+  .block{
+    width: 20vw;
+    height: calc(20vw);
+  }
+}
